@@ -1,25 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
+import BoardItem from 'components/BoardItem';
 import './App.css';
+import { latestBoardlistMock, top3BoardListMock,commentListMock, favoriteListMock } from 'mocks';
+import Top3Item from 'components/Top3Item';
+import CommentItem from 'components/CommentItem';
+import FavoriteItem from 'components/FavorieItem';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <>
+   <div style={{display:'flex'  , columnGap: '30px', rowGap:'20px'}}>
+   {favoriteListMock.map(favoriteListItem => <FavoriteItem  favoriteListItem={favoriteListItem}/>)}
+   </div>
+     
+   </>
   );
 }
 
