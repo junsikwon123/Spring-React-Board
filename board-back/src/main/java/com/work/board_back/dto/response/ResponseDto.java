@@ -16,7 +16,7 @@ public class ResponseDto {
     private String code;
     private String message;
 
-    public static ResponseEntity<ResponseDto> datavaseError() {
+    public static ResponseEntity<ResponseDto> databaseError() {
         ResponseDto reponseBody = new ResponseDto(ResponseCode.DATABASE_ERROR, ResponseMessage.DATABASE_ERROR);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(reponseBody);
     }

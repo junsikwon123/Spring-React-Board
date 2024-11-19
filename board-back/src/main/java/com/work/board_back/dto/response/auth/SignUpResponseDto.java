@@ -5,20 +5,19 @@ import org.springframework.http.ResponseEntity;
 
 import com.work.board_back.common.ResponseCode;
 import com.work.board_back.common.ResponseMessage;
-import com.work.board_back.dto.request.auth.SignUpRequestDto;
 import com.work.board_back.dto.response.ResponseDto;
 
 import lombok.Getter;
 
 @Getter
-public class SighUpResponseDto extends ResponseDto {
+public class SignUpResponseDto extends ResponseDto {
 
-    private SighUpResponseDto() {
+    private SignUpResponseDto() {
         super(ResponseCode.SUCCESS, ResponseMessage.SUCCESS);
     }
 
-    public static ResponseEntity<SignUpRequestDto> success() {
-        SignUpRequestDto result = new SignUpRequestDto();
+    public static ResponseEntity<SignUpResponseDto> success() {
+        SignUpResponseDto result = new SignUpResponseDto();
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 
