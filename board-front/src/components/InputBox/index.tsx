@@ -10,8 +10,8 @@ interface Props {
     value: string;
     setValue: Dispatch<React.SetStateAction<string>>;
 
-    icon?: string;
-    onBouttonClick?: () => void;
+    icon?: 'eye-light-off-icon' | 'eye-light-on-icon' | 'eye-right-light-icon';
+    onButtonClick?: () => void;
 
     message?: string;
 
@@ -23,7 +23,7 @@ const InputBox = forwardRef<HTMLInputElement, Props>((props: Props, ref) => {
 
     // state : properties
     const { label, type, error, placeholder, value, icon, message,
-        setValue, onBouttonClick, onKeyDown
+        setValue, onButtonClick, onKeyDown
     } = props;
 
     // event handler : input값 변경 이벤트 처리 함수
@@ -43,8 +43,8 @@ const InputBox = forwardRef<HTMLInputElement, Props>((props: Props, ref) => {
             <div className='inputbox-label'>{label}</div>
             <div className={error ? 'inputbox-container-error' : 'inputbox-container'}>
                 <input ref={ref} type={type} className='input' placeholder={placeholder} value={value} onChange={onChangeHadlder} onKeyDown={onKeyDownHandler} />
-                {onBouttonClick !== undefined && (
-                    <div className='icon-button'>
+                {onButtonClick !== undefined && (
+                    <div className='icon-button' onClick={onButtonClick}>
                         {icon !== undefined && (<div className={`icon ${icon}`}></div>)}
                     </div>
                 )}
