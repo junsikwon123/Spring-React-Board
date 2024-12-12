@@ -34,28 +34,6 @@ public class WebSecurityConfig {
 
         @Bean
         protected SecurityFilterChain configure(HttpSecurity httpSecurity) throws Exception {
-
-                // httpSecurity
-                // .cors(cors -> cors.disable())
-                // .csrf(csrf -> csrf.disable())
-                // .httpBasic(httpBasic -> httpBasic.disable())
-                // .sessionManagement(session ->
-                // session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                // )
-                // .authorizeHttpRequests(authz -> authz
-                // .requestMatchers("/**").permitAll()
-                // .anyRequest().authenticated()
-                // );
-
-                // httpSecurity
-                // .cors().and()
-                // .csrf().disable()
-                // .httpBasic().disable()
-                // .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                // .authorizeRequests()
-                // .antMatchers().permitAll()
-                // .anyRequest().authenticated();
-
                 httpSecurity
                                 .cors(cors -> cors
                                                 .configurationSource(corsConfigrationSource()))
@@ -90,18 +68,17 @@ public class WebSecurityConfig {
 
                 return source;
         }
+}
 
-        class FailedAuthenticationEntryPoint implements AuthenticationEntryPoint {
+class FailedAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
-                @Override
-                public void commence(HttpServletRequest request, HttpServletResponse response,
-                                AuthenticationException authException) throws IOException, ServletException {
+        @Override
+        public void commence(HttpServletRequest request, HttpServletResponse response,
+                        AuthenticationException authException) throws IOException, ServletException {
 
-                        response.setContentType("application/json");
-                        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                        response.getWriter().write("{\"code \": \"AF\",\"message\": \"Authorization Failed\"}");
-                }
-
+                response.setContentType("application/json");
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                response.getWriter().write("{\"code \": \"AF\",\"message\": \"Authorization Failed\"}");
         }
 
 }
